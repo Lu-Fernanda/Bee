@@ -43,12 +43,12 @@ public class ServiceDatosCaso {
         dJPA.setArchivoAdicional(datos.getArchivoAdicional());
         dJPA.setEstado(datos.getEstado());
                        
-        
+        /*
         FacadeUsuario fu= new FacadeUsuario();
         Usuario us=fu.busacarObj(datos.getIdUsuario());
         dJPA.setIdUsuario(us);
         dJPA.setIdAbogado(null);
-        
+        */
         facade.crearObj(dJPA);
 
         return dto;
