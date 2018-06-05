@@ -49,6 +49,8 @@ public class ServiceDatosCaso {
         dJPA.setIdUsuario(us);
         dJPA.setIdAbogado(null);
         
+        System.out.println(datos.getIdUsuario());
+        
         facade.crearObj(dJPA);
 
         return dto;
