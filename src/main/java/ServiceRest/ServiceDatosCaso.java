@@ -48,7 +48,7 @@ public class ServiceDatosCaso {
         System.out.println(datos.getIdUsuario().getCc());
         
         FacadeUsuario fu= new FacadeUsuario();
-        Usuario us = fu.busacarObj(1031164);
+        Usuario us = fu.busacarObj(datos.getIdUsuario().getCc());
         dJPA.setIdUsuario(us);
         
         
