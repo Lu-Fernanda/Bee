@@ -44,12 +44,13 @@ public class ServiceDatosCaso {
         dJPA.setEstado(datos.getEstado());
                        
         
+        System.out.println(datos.getIdUsuario());
+        
         FacadeUsuario fu= new FacadeUsuario();
         Usuario us=fu.busacarObj(datos.getIdUsuario());
         dJPA.setIdUsuario(us);
         dJPA.setIdAbogado(null);
         
-        System.out.println(datos.getIdUsuario());
         
         facade.crearObj(dJPA);
 
