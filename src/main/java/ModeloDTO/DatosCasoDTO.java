@@ -129,5 +129,10 @@ public class DatosCasoDTO {
         return this.list_inf;
     }
 
+    @Override
+    public String toString() {
+        return "DatosCasoDTO{" + "id=" + id + ", tipoCaso=" + tipoCaso + ", abogadoAnterior=" + abogadoAnterior + ", informacionCaso=" + informacionCaso + ", archivoAdicional=" + archivoAdicional + ", estado=" + estado + ", idUsuario=" + idUsuario + ", idAbogado=" + idAbogado + ", list_inf=" + list_inf + ", list_dil=" + list_dil + '}';
+    }
+
 
 }

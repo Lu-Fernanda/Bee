@@ -342,7 +342,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.Usuario[ cc=" + cc + " ]";
+        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", cc=" + cc + ", edad=" + edad + ", celular=" + celular + ", telefono=" + telefono + ", correo=" + correo + ", estrato=" + estrato + ", direccion=" + direccion + ", barrio=" + barrio + ", tipoCasa=" + tipoCasa + ", localidad=" + localidad + ", reciboPublico=" + reciboPublico + ", nHijos=" + nHijos + ", salud=" + salud + ", trabajo=" + trabajo + ", nPersonas=" + nPersonas + ", tipoTrabajo=" + tipoTrabajo + ", ingresos=" + ingresos + ", contactoAdicional=" + contactoAdicional + ", numTel=" + numTel + ", notificacion=" + notificacion + ", estado=" + estado + ", datoscasoList=" + datoscasoList + '}';
     }
     
 }
