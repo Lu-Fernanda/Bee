@@ -43,12 +43,14 @@ public class ServiceDatosCaso {
         dJPA.setArchivoAdicional(datos.getArchivoAdicional());
         dJPA.setEstado(datos.getEstado());
                        
-        
-        System.out.println(datos.getIdUsuario());
+         System.out.println("##############");
+        System.out.println("##############");
+        System.out.println(datos.getIdUsuario().getCc());
         
         FacadeUsuario fu= new FacadeUsuario();
-        Usuario us=fu.busacarObj(datos.getIdUsuario().getCc());
+        Usuario us = fu.busacarObj(datos.getIdUsuario().getCc());
         dJPA.setIdUsuario(us);
+        
         
         System.out.println("##############");
         System.out.println("##############");
