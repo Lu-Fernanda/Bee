@@ -45,7 +45,7 @@ public class ServiceUsuario {
         
         FacadeStudio fs= new FacadeStudio();
         Studio studio=fs.busacarObj(usu.getStudio().getId());
-        usuJPA.setStudio(studio);
+        usuJPA.setIdStudio(studio);
         
         facade.crearObj(usuJPA);
 
