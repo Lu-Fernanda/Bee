@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -13,14 +17,27 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
-
+/**
+ *
+ * @author root
+ */
 @Entity
 @Table(name = "studio")
 @XmlRootElement
-
+@NamedQueries({
+    @NamedQuery(name = "Studio.findAll", query = "SELECT s FROM Studio s"),
+    @NamedQuery(name = "Studio.findById", query = "SELECT s FROM Studio s WHERE s.id = :id"),
+    @NamedQuery(name = "Studio.findByNombre", query = "SELECT s FROM Studio s WHERE s.nombre = :nombre"),
+    @NamedQuery(name = "Studio.findByPais", query = "SELECT s FROM Studio s WHERE s.pais = :pais"),
+    @NamedQuery(name = "Studio.findByCiudad", query = "SELECT s FROM Studio s WHERE s.ciudad = :ciudad"),
+    @NamedQuery(name = "Studio.findByCorreo", query = "SELECT s FROM Studio s WHERE s.correo = :correo"),
+    @NamedQuery(name = "Studio.findByCel", query = "SELECT s FROM Studio s WHERE s.cel = :cel"),
+    @NamedQuery(name = "Studio.findByCalificacion", query = "SELECT s FROM Studio s WHERE s.calificacion = :calificacion")})
 public class Studio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -28,14 +45,19 @@ public class Studio implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 50)
     @Column(name = "nombre")
     private String nombre;
+    @Size(max = 50)
     @Column(name = "pais")
     private String pais;
+    @Size(max = 50)
     @Column(name = "ciudad")
     private String ciudad;
+    @Size(max = 50)
     @Column(name = "correo")
     private String correo;
+    @Size(max = 20)
     @Column(name = "cel")
     private String cel;
     @Column(name = "calificacion")
@@ -107,6 +129,7 @@ public class Studio implements Serializable {
     }
 
     @XmlTransient
+    @JsonIgnore
     public List<Usuario> getUsuarioList() {
         return usuarioList;
     }
@@ -137,7 +160,7 @@ public class Studio implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sergioarboleda.mavenproject3.Studio[ id=" + id + " ]";
+        return "modelo.Studio[ id=" + id + " ]";
     }
     
 }

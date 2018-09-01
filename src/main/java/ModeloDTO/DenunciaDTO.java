@@ -28,6 +28,7 @@ public class DenunciaDTO {
         this.nombrePersona = nombrePersona;
         this.relato = relato;
         this.estado = estado;
+        this.idDenunciante= idDenunciante;
     }
 
    
@@ -77,6 +78,14 @@ public class DenunciaDTO {
 
     public void setEstado(boolean estado) {
         this.estado = estado;
+    }
+
+    public int getIdDenunciante() {
+        return idDenunciante;
+    }
+
+    public void setIdDenunciante(int idDenunciante) {
+        this.idDenunciante = idDenunciante;
     }
     
     

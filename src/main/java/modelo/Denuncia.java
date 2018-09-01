@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -11,13 +15,25 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+/**
+ *
+ * @author root
+ */
 @Entity
 @Table(name = "denuncia")
 @XmlRootElement
-
+@NamedQueries({
+    @NamedQuery(name = "Denuncia.findAll", query = "SELECT d FROM Denuncia d"),
+    @NamedQuery(name = "Denuncia.findById", query = "SELECT d FROM Denuncia d WHERE d.id = :id"),
+    @NamedQuery(name = "Denuncia.findBySospecha", query = "SELECT d FROM Denuncia d WHERE d.sospecha = :sospecha"),
+    @NamedQuery(name = "Denuncia.findByTipoPersona", query = "SELECT d FROM Denuncia d WHERE d.tipoPersona = :tipoPersona"),
+    @NamedQuery(name = "Denuncia.findByNombrePersona", query = "SELECT d FROM Denuncia d WHERE d.nombrePersona = :nombrePersona"),
+    @NamedQuery(name = "Denuncia.findByRelato", query = "SELECT d FROM Denuncia d WHERE d.relato = :relato"),
+    @NamedQuery(name = "Denuncia.findByEstado", query = "SELECT d FROM Denuncia d WHERE d.estado = :estado"),
+    @NamedQuery(name = "Denuncia.findByIdDenunciante", query = "SELECT d FROM Denuncia d WHERE d.idDenunciante = :idDenunciante")})
 public class Denuncia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,8 +45,10 @@ public class Denuncia implements Serializable {
     private Boolean sospecha;
     @Column(name = "tipoPersona")
     private Integer tipoPersona;
+    @Size(max = 50)
     @Column(name = "nombrePersona")
     private String nombrePersona;
+    @Size(max = 1000)
     @Column(name = "relato")
     private String relato;
     @Column(name = "estado")
@@ -123,7 +141,7 @@ public class Denuncia implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sergioarboleda.mavenproject3.Denuncia[ id=" + id + " ]";
+        return "modelo.Denuncia[ id=" + id + " ]";
     }
     
 }

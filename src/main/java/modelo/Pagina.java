@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -13,13 +17,16 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
-
+/**
+ *
+ * @author root
+ */
 @Entity
 @Table(name = "pagina")
 @XmlRootElement
-
 public class Pagina implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -27,6 +34,7 @@ public class Pagina implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+    @Size(max = 50)
     @Column(name = "nombrePagina")
     private String nombrePagina;
     @JoinColumn(name = "modelo", referencedColumnName = "id")
@@ -86,7 +94,7 @@ public class Pagina implements Serializable {
 
     @Override
     public String toString() {
-        return "edu.sergioarboleda.mavenproject3.Pagina[ id=" + id + " ]";
+        return "modelo.Pagina[ id=" + id + " ]";
     }
     
 }

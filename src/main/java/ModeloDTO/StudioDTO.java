@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import modelo.Studio;
+import modelo.Usuario;
 
 /**
  *
@@ -24,6 +25,7 @@ public class StudioDTO {
     private String correo;
     private String cel;
     private int calificacion;
+    List<UsuarioDTO> usuarioList;
 
     public StudioDTO(Studio studio) {
         this.id = studio.getId();
@@ -33,6 +35,7 @@ public class StudioDTO {
         this.correo = studio.getCorreo();
         this.cel = studio.getCel();
         this.calificacion = studio.getCalificacion();
+        this.usuarioList= new ArrayList<UsuarioDTO>();
     }
     
     public int getId() {
@@ -91,5 +94,11 @@ public class StudioDTO {
         this.calificacion = calificacion;
     }
  
-        
+       public List<UsuarioDTO> list_Paginas(List<Usuario> list_usu) {
+        for (Usuario inf: list_usu) {
+            UsuarioDTO dTO = new UsuarioDTO(inf);
+            this.usuarioList.add(dTO);
+        }
+        return this.usuarioList;
+    }    
 }
