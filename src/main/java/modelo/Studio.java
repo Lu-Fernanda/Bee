@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -17,10 +21,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 import org.codehaus.jackson.annotate.JsonIgnore;
 
-
+/**
+ *
+ * @author root
+ */
 @Entity
 @Table(name = "studio")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Studio.findAll", query = "SELECT s FROM Studio s"),
+    @NamedQuery(name = "Studio.findById", query = "SELECT s FROM Studio s WHERE s.id = :id"),
+    @NamedQuery(name = "Studio.findByNombre", query = "SELECT s FROM Studio s WHERE s.nombre = :nombre"),
+    @NamedQuery(name = "Studio.findByPais", query = "SELECT s FROM Studio s WHERE s.pais = :pais"),
+    @NamedQuery(name = "Studio.findByCiudad", query = "SELECT s FROM Studio s WHERE s.ciudad = :ciudad"),
+    @NamedQuery(name = "Studio.findByCorreo", query = "SELECT s FROM Studio s WHERE s.correo = :correo"),
+    @NamedQuery(name = "Studio.findByCel", query = "SELECT s FROM Studio s WHERE s.cel = :cel"),
+    @NamedQuery(name = "Studio.findByCalificacion", query = "SELECT s FROM Studio s WHERE s.calificacion = :calificacion")})
 public class Studio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -45,6 +61,8 @@ public class Studio implements Serializable {
     private String cel;
     @Column(name = "calificacion")
     private Integer calificacion;
+    @OneToMany(mappedBy = "idStudio")
+    private List<Usuario> usuarioList;
 
     public Studio() {
     }
@@ -107,6 +125,16 @@ public class Studio implements Serializable {
 
     public void setCalificacion(Integer calificacion) {
         this.calificacion = calificacion;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     @Override

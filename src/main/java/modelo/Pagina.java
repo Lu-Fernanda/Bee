@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -24,6 +28,11 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 @Entity
 @Table(name = "pagina")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Pagina.findAll", query = "SELECT p FROM Pagina p"),
+    @NamedQuery(name = "Pagina.findById", query = "SELECT p FROM Pagina p WHERE p.id = :id"),
+    @NamedQuery(name = "Pagina.findByNombrePagina", query = "SELECT p FROM Pagina p WHERE p.nombrePagina = :nombrePagina"),
+    @NamedQuery(name = "Pagina.findByModelo", query = "SELECT p FROM Pagina p WHERE p.modelo = :modelo")})
 public class Pagina implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -34,6 +43,10 @@ public class Pagina implements Serializable {
     @Size(max = 50)
     @Column(name = "nombrePagina")
     private String nombrePagina;
+    @Column(name = "modelo")
+    private Integer modelo;
+    @OneToMany(mappedBy = "idPagina")
+    private List<Usuario> usuarioList;
 
     public Pagina() {
     }
@@ -56,6 +69,24 @@ public class Pagina implements Serializable {
 
     public void setNombrePagina(String nombrePagina) {
         this.nombrePagina = nombrePagina;
+    }
+
+    public Integer getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(Integer modelo) {
+        this.modelo = modelo;
+    }
+
+    @XmlTransient
+    @JsonIgnore
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
     }
 
     @Override

@@ -1,4 +1,8 @@
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package modelo;
 
 import java.io.Serializable;
@@ -20,6 +24,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "denuncia")
 @XmlRootElement
+@NamedQueries({
+    @NamedQuery(name = "Denuncia.findAll", query = "SELECT d FROM Denuncia d"),
+    @NamedQuery(name = "Denuncia.findById", query = "SELECT d FROM Denuncia d WHERE d.id = :id"),
+    @NamedQuery(name = "Denuncia.findBySospecha", query = "SELECT d FROM Denuncia d WHERE d.sospecha = :sospecha"),
+    @NamedQuery(name = "Denuncia.findByTipoPersona", query = "SELECT d FROM Denuncia d WHERE d.tipoPersona = :tipoPersona"),
+    @NamedQuery(name = "Denuncia.findByNombrePersona", query = "SELECT d FROM Denuncia d WHERE d.nombrePersona = :nombrePersona"),
+    @NamedQuery(name = "Denuncia.findByRelato", query = "SELECT d FROM Denuncia d WHERE d.relato = :relato"),
+    @NamedQuery(name = "Denuncia.findByEstado", query = "SELECT d FROM Denuncia d WHERE d.estado = :estado"),
+    @NamedQuery(name = "Denuncia.findByIdDenunciante", query = "SELECT d FROM Denuncia d WHERE d.idDenunciante = :idDenunciante")})
 public class Denuncia implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
