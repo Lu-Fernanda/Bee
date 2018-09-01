@@ -27,6 +27,8 @@ public class StudioDTO {
     private int calificacion;
     List<UsuarioDTO> usuarioList;
 
+    public StudioDTO() {
+    }
     public StudioDTO(Studio studio) {
         this.id = studio.getId();
         this.nombre = studio.getNombre();

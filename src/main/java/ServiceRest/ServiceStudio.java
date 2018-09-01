@@ -37,8 +37,7 @@ public class ServiceStudio {
 
         facade = new FacadeStudio();
         Studio stJPA = new Studio();
-        
-        
+        System.out.println("--------------------"+st.getCel()+"------");
         stJPA.setNombre(st.getNombre());
         stJPA.setPais(st.getPais());
         stJPA.setCiudad(st.getCiudad());
