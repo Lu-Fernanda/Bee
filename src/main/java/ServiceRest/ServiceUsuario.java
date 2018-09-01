@@ -67,18 +67,17 @@ public class ServiceUsuario {
         return usuDTO;
     }
 
-//    //Traer una persona especifica
-//    @GET
-//    @Path("/{cc}")
-//    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-//    public UsuarioDTO getEmployee(@PathParam("cc") String cc) throws ConexionException {
-//        FacadeUsuario facade = null;
-//        UsuarioDTO dto = null;
-//
-//        facade = new FacadeUsuario();
-//        Usuario usu = facade.busacarObj(Integer.parseInt(cc));
-//        dto = new UsuarioDTO(usu);
-//        dto.list_DatosCaso(usu.getDatoscasoList());
-//        return dto;
-//    }
+    //Traer una persona especifica
+    @GET
+    @Path("/{id}")
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public UsuarioDTO getEmployee(@PathParam("id") String id) throws ConexionException {
+        FacadeUsuario facade = null;
+        UsuarioDTO dto = null;
+
+        facade = new FacadeUsuario();
+        Usuario usu = facade.busacarObj(Integer.parseInt(id));
+        dto = new UsuarioDTO(usu);
+        return dto;
+    }
 }

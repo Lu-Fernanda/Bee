@@ -21,7 +21,11 @@ public class PaginaDTO {
     
     private int id;
     private String nombrePagina;
+
+    public PaginaDTO() {
+    }
    
+    
     public PaginaDTO(Pagina pagina) {
         this.id = id;
         this.nombrePagina = nombrePagina;

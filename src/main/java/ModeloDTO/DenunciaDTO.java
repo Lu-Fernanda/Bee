@@ -4,6 +4,7 @@ package ModeloDTO;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import modelo.Denuncia;
 import modelo.Studio;
 
 
@@ -19,16 +20,19 @@ public class DenunciaDTO {
     private String relato;
     private boolean estado;
     private int idDenunciante;
+
+    public DenunciaDTO() {
+    }
     
 
-    public DenunciaDTO(Studio studio) {
-        this.id = id;
-        this.sospecha = sospecha;
-        this.tipoPersona = tipoPersona;
-        this.nombrePersona = nombrePersona;
-        this.relato = relato;
-        this.estado = estado;
-        this.idDenunciante= idDenunciante;
+    public DenunciaDTO(Denuncia den) {
+        this.id = den.getId();
+        this.sospecha = den.getSospecha();
+        this.tipoPersona = den.getTipoPersona();
+        this.nombrePersona = den.getNombrePersona();
+        this.relato = den.getRelato();
+        this.estado = den.getEstado();
+        this.idDenunciante= den.getIdDenunciante();
     }
 
    
@@ -87,8 +91,5 @@ public class DenunciaDTO {
     public void setIdDenunciante(int idDenunciante) {
         this.idDenunciante = idDenunciante;
     }
-    
-    
-    
     
 }
