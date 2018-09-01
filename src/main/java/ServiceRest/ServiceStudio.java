@@ -8,6 +8,7 @@ package ServiceRest;
 import DaoGenerico.ConexionException;
 import Facade.FacadeStudio;
 import ModeloDTO.StudioDTO;
+import ModeloDTO.UsuarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.Consumes;
@@ -61,11 +62,11 @@ public class ServiceStudio {
         facade = new FacadeStudio();
         List<Studio> stu = facade.buscarTodoObj();
         
-//        for (Studio stt : stu) {
-//            StudioDTO dto = new StudioDTO(stt);
-//            //dto.list_Paginas(usu.getPaginaList());
-//            stuDTO.add(dto);
-//        }
+       for (Studio stt : stu) {
+            StudioDTO dto = new StudioDTO(stt.getId(),stt.getNombre(),stt.getPais(),stt.getCiudad(),stt.getCorreo(),stt.getCel(),stt.getCalificacion(),new ArrayList<UsuarioDTO>());
+            //dto.list_Paginas(usu.getPaginaList());
+            stuDTO.add(dto);
+        }
 
         return stuDTO;
     }

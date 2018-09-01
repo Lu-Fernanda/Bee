@@ -27,17 +27,15 @@ public class StudioDTO {
     private int calificacion;
     List<UsuarioDTO> usuarioList;
 
-    public StudioDTO() {
-    }
-    public StudioDTO(Studio studio) {
-        this.id = studio.getId();
-        this.nombre = studio.getNombre();
-        this.pais = studio.getPais();
-        this.ciudad = studio.getCiudad();
-        this.correo = studio.getCorreo();
-        this.cel = studio.getCel();
-        this.calificacion = studio.getCalificacion();
-        //this.usuarioList= new ArrayList<UsuarioDTO>();
+    public StudioDTO(int id, String nombre, String pais, String ciudad, String correo, String cel, int calificacion, List<UsuarioDTO> usuarioList) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pais = pais;
+        this.ciudad = ciudad;
+        this.correo = correo;
+        this.cel = cel;
+        this.calificacion = calificacion;
+        this.usuarioList = usuarioList;
     }
     
     public int getId() {
