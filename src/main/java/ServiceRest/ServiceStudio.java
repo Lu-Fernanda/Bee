@@ -35,6 +35,7 @@ public class ServiceStudio {
         facade = new FacadeStudio();
         Studio stJPA = new Studio();
         System.out.println("--------------------"+"ESTUDIO"+"------");
+        
         stJPA.setNombre(st.getNombre());
         stJPA.setPais(st.getPais());
         stJPA.setCiudad(st.getCiudad());
@@ -48,24 +49,24 @@ public class ServiceStudio {
     }
 
     //Traer todos los usuarios que estan inscritos en el sistema
-    @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
-    public List<StudioDTO> getStudio_JSON() throws ConexionException {
-        List<StudioDTO> stuDTO = new ArrayList<StudioDTO>();
-        FacadeStudio facade = null;
-
-        System.out.println("------"+"lalalalalallala"+"-------");
-        facade = new FacadeStudio();
-        List<Studio> stu = facade.buscarTodoObj();
-        
-       for (Studio stt : stu) {
-            StudioDTO dto = new StudioDTO(stt);
-          
-            stuDTO.add(dto);
-        }
-
-        return stuDTO;
-    }
+//    @GET
+//    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+//    public List<StudioDTO> getStudio_JSON() throws ConexionException {
+//        List<StudioDTO> stuDTO = new ArrayList<StudioDTO>();
+//        FacadeStudio facade = null;
+//
+//        System.out.println("------"+"lalalalalallala"+"-------");
+//        facade = new FacadeStudio();
+//        List<Studio> stu = facade.buscarTodoObj();
+//        
+//       for (Studio stt : stu) {
+////            StudioDTO dto = new StudioDTO(stt);
+//          
+//            stuDTO.add(dto);
+//        }
+//
+//        return stuDTO;
+//    }
 
     //Traer una persona especifica
 //    @GET

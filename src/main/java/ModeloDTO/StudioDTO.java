@@ -23,14 +23,14 @@ public class StudioDTO {
     private String cel;
     private int calificacion;
 
-    public StudioDTO(Studio stu) {
-        this.id = stu.getId();
-        this.nombre = stu.getNombre();
-        this.pais = stu.getPais();
-        this.ciudad = stu.getCiudad();
-        this.correo = stu.getCorreo();
-        this.cel = stu.getCel();
-        this.calificacion = stu.getCalificacion();
+    public StudioDTO(int id, String nombre, String pais, String ciudad, String correo, String cel, int calificacion) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pais = pais;
+        this.ciudad = ciudad;
+        this.correo = correo;
+        this.cel = cel;
+        this.calificacion = calificacion;
     }
     
     public int getId() {
