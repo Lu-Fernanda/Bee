@@ -31,10 +31,11 @@ public class ServiceUsuario {
 
         facade = new FacadeUsuario();
         Usuario usuJPA = new Usuario();
-        
+        usuJPA.setId(usu.getId());
         usuJPA.setNombre(usu.getNombre());
         usuJPA.setApellido(usu.getApellido());
         usuJPA.setCc(usu.getCc());
+        System.out.println("-----------------------");
         usuJPA.setEdad(usu.getEdad());
         usuJPA.setGenero(usu.getGenero());
         usuJPA.setCelular(usu.getCelular());
