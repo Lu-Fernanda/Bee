@@ -64,7 +64,7 @@ public class ServiceUsuario {
         
         for (Usuario usu : usuarios) {
             UsuarioDTO dto = new UsuarioDTO(usu);
-            dto.list_Paginas(usu.getPaginaList());
+            //dto.list_Paginas(usu.getPaginaList());
             usuDTO.add(dto);
         }
 
