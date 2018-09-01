@@ -9,10 +9,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import modelo.Studio;
 import modelo.Usuario;
 
-/**
- *
- * @author root
- */
+
 @XmlRootElement(name = "Studio")
 @XmlAccessorType(XmlAccessType.FIELD)
 
