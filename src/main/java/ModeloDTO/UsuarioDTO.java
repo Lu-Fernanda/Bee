@@ -24,7 +24,7 @@ public class UsuarioDTO {
     private String correo;
     private String nombreModelo;
     private StudioDTO studio;
-    List<PaginaDTO> paginaList;
+    ArrayList<PaginaDTO> paginaList;
     
 
     public UsuarioDTO(Usuario usu) {
@@ -37,7 +37,7 @@ public class UsuarioDTO {
         this.celular = usu.getCelular();
         this.correo = usu.getCorreo();
         this.nombreModelo = usu.getNombreModelo();
-        this.paginaList=new ArrayList<PaginaDTO>();
+       // this.paginaList=new ArrayList<PaginaDTO>();
     }
 
     public StudioDTO getStudio() {
@@ -52,7 +52,7 @@ public class UsuarioDTO {
         return paginaList;
     }
 
-    public void setPaginaList(List<PaginaDTO> paginaList) {
+    public void setPaginaList(ArrayList<PaginaDTO> paginaList) {
         this.paginaList = paginaList;
     }
 
