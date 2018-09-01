@@ -23,8 +23,8 @@ public class UsuarioDTO {
     private String celular;
     private String correo;
     private String nombreModelo;
-    private StudioDTO idStudio;
-    private PaginaDTO idPagina;
+    private String idStudio;
+    private String idPagina;
     
 
     public UsuarioDTO(Usuario usu) {
@@ -37,8 +37,8 @@ public class UsuarioDTO {
         this.celular = usu.getCelular();
         this.correo = usu.getCorreo();
         this.nombreModelo = usu.getNombreModelo();
-        this.idStudio = new StudioDTO(usu.getIdStudio());
-        this.idPagina= new PaginaDTO(usu.getIdPagina());
+        this.idStudio =usu.getNombre();
+        this.idPagina=usu.getIdPagina();
     }
 
     public int getId() {
@@ -113,21 +113,21 @@ public class UsuarioDTO {
         this.nombreModelo = nombreModelo;
     }
 
-    public StudioDTO getIdStudio() {
-        return idStudio;
-    }
-
-    public void setIdStudio(StudioDTO idStudio) {
-        this.idStudio = idStudio;
-    }
-
-    public PaginaDTO getIdPagina() {
-        return idPagina;
-    }
-
-    public void setIdPagina(PaginaDTO idPagina) {
-        this.idPagina = idPagina;
-    }
+//    public StudioDTO getIdStudio() {
+//        return idStudio;
+//    }
+//
+//    public void setIdStudio(StudioDTO idStudio) {
+//        this.idStudio = idStudio;
+//    }
+//
+//    public PaginaDTO getIdPagina() {
+//        return idPagina;
+//    }
+//
+//    public void setIdPagina(PaginaDTO idPagina) {
+//        this.idPagina = idPagina;
+//    }
 
     
 }

@@ -10,8 +10,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -36,7 +34,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Usuario.findByEdad", query = "SELECT u FROM Usuario u WHERE u.edad = :edad"),
     @NamedQuery(name = "Usuario.findByCelular", query = "SELECT u FROM Usuario u WHERE u.celular = :celular"),
     @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
-    @NamedQuery(name = "Usuario.findByNombreModelo", query = "SELECT u FROM Usuario u WHERE u.nombreModelo = :nombreModelo")})
+    @NamedQuery(name = "Usuario.findByNombreModelo", query = "SELECT u FROM Usuario u WHERE u.nombreModelo = :nombreModelo"),
+    @NamedQuery(name = "Usuario.findByIdStudio", query = "SELECT u FROM Usuario u WHERE u.idStudio = :idStudio"),
+    @NamedQuery(name = "Usuario.findByIdPagina", query = "SELECT u FROM Usuario u WHERE u.idPagina = :idPagina")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -67,12 +67,12 @@ public class Usuario implements Serializable {
     @Size(max = 30)
     @Column(name = "nombreModelo")
     private String nombreModelo;
-    @JoinColumn(name = "idStudio", referencedColumnName = "id")
-    @ManyToOne
-    private Studio idStudio;
-    @JoinColumn(name = "idPagina", referencedColumnName = "id")
-    @ManyToOne
-    private Pagina idPagina;
+    @Size(max = 30)
+    @Column(name = "idStudio")
+    private String idStudio;
+    @Size(max = 30)
+    @Column(name = "idPagina")
+    private String idPagina;
 
     public Usuario() {
     }
@@ -153,19 +153,19 @@ public class Usuario implements Serializable {
         this.nombreModelo = nombreModelo;
     }
 
-    public Studio getIdStudio() {
+    public String getIdStudio() {
         return idStudio;
     }
 
-    public void setIdStudio(Studio idStudio) {
+    public void setIdStudio(String idStudio) {
         this.idStudio = idStudio;
     }
 
-    public Pagina getIdPagina() {
+    public String getIdPagina() {
         return idPagina;
     }
 
-    public void setIdPagina(Pagina idPagina) {
+    public void setIdPagina(String idPagina) {
         this.idPagina = idPagina;
     }
 
