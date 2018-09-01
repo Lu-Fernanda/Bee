@@ -71,7 +71,46 @@ function registroDenuncia() {
         
         success: function (result) {
             console.log(result);
-            alert("Gracias porcontribuir!");
+            alert("Gracias por contribuir!");
+            window.location = "index.html";
+
+        }
+    });
+
+
+}
+
+function registroDenunciaStudio() {
+
+    var sospecha = $('#sospecha').val();
+    var tipoPersona = $('#tipoPersona').val();
+    var nombrePersona = $('#nombrePersona').val();
+    var relato = $('#relato').val();
+    var estado = $('#estado').val();
+    var idDenunciante = $('#idDenunciante').val();
+    
+    var sendInfo = {
+        sospecha:sospecha,
+        tipoPersona:tipoPersona,
+        nombrePersona:nombrePersona,
+        relato:relato,
+        estado:estado,
+        idDenunciante:idDenunciante
+
+    };   
+    
+    console.log(sendInfo);
+
+    $.ajax({
+        url: "https://jboton-bee.herokuapp.com/indexRest/rest/denuncia",
+        data: JSON.stringify(sendInfo),
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        
+        success: function (result) {
+            console.log(result);
+            alert("Gracias por contribuir!");
             window.location = "index.html";
 
         }
