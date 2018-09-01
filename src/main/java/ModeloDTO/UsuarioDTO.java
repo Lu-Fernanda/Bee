@@ -25,6 +25,10 @@ public class UsuarioDTO {
     private String nombreModelo;
     private String idStudio;
     private String idPagina;
+
+    public UsuarioDTO() {
+    }
+    
     
 
     public UsuarioDTO(Usuario usu) {

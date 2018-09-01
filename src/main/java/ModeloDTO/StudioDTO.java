@@ -23,6 +23,10 @@ public class StudioDTO {
     private String cel;
     private int calificacion;
 
+    public StudioDTO() {
+    }
+
+    
     public StudioDTO(Studio st) {
         this.id = st.getId();
         this.nombre = st.getNombre();
