@@ -57,6 +57,7 @@ public class ServiceStudio {
         List<StudioDTO> stuDTO = new ArrayList<StudioDTO>();
         FacadeStudio facade = null;
 
+        System.out.println("------"+"lalalalalallala"+"-------");
         facade = new FacadeStudio();
         List<Studio> stu = facade.buscarTodoObj();
         

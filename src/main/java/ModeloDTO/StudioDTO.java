@@ -37,7 +37,7 @@ public class StudioDTO {
         this.correo = studio.getCorreo();
         this.cel = studio.getCel();
         this.calificacion = studio.getCalificacion();
-        this.usuarioList= new ArrayList<UsuarioDTO>();
+        //this.usuarioList= new ArrayList<UsuarioDTO>();
     }
     
     public int getId() {
