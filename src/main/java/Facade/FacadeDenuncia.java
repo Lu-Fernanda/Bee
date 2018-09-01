@@ -9,17 +9,20 @@ import DaoGenerico.ConexionException;
 import DaoGenerico.ServiceImpl;
 import DaoGenerico.SingletonConnection;
 import javax.persistence.EntityManager;
-import modelo.Usuario;
+import modelo.Denuncia;
+import modelo.Pagina;
 
-
-public class FacadeUsuario extends ServiceImpl<Usuario> {
+/**
+ *
+ * @author root
+ */
+public class FacadeDenuncia extends ServiceImpl<Denuncia> {
     
-     public FacadeUsuario() throws ConexionException {
-        super(Usuario.class);
+     public FacadeDenuncia() throws ConexionException {
+        super(Denuncia.class);
         try{
             System.out.println("hola mundo");
-
-            EntityManager em = SingletonConnection.getConnection();
+             EntityManager em = SingletonConnection.getConnection();
             System.out.println("conexion!!");
             super.setEntityManager(em);
         }catch(Exception e){
@@ -28,3 +31,4 @@ public class FacadeUsuario extends ServiceImpl<Usuario> {
         }
     }
 }
+

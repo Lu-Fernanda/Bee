@@ -3,6 +3,7 @@ package ServiceRest;
 
 import DaoGenerico.ConexionException;
 import ModeloDTO.UsuarioDTO;
+import Facade.FacadeStudio;
 import Facade.FacadeUsuario;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,9 +15,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import modelo.Studio;
 import modelo.Usuario;
 
-@Path("/inscripcion")
+@Path("/modelo")
 public class ServiceUsuario {
     
     //Agregar usuario al sistema
@@ -31,31 +33,20 @@ public class ServiceUsuario {
         facade = new FacadeUsuario();
         Usuario usuJPA = new Usuario();
         
+     
         usuJPA.setNombre(usu.getNombre());
         usuJPA.setApellido(usu.getApellido());
-        usuJPA.setTipoDocumento(usu.getTipoDocumento());
         usuJPA.setCc(usu.getCc());
         usuJPA.setEdad(usu.getEdad());
         usuJPA.setCelular(usu.getCelular());
-        usuJPA.setTelefono(usu.getTelefono());
         usuJPA.setCorreo(usu.getCorreo());
-        usuJPA.setEstrato(usu.getEstrato());
-        usuJPA.setDireccion(usu.getDireccion());        
-        usuJPA.setBarrio(usu.getBarrio());
-        usuJPA.setTipoCasa(usu.getTipoCasa());
-        usuJPA.setLocalidad(usu.getLocalidad());
-        usuJPA.setReciboPublico(usu.getReciboPublico());
-        usuJPA.setNHijos(usu.getnHijos());
-        usuJPA.setSalud(usu.getSalud());
-        usuJPA.setTrabajo(usu.getTrabajo());
-        usuJPA.setNPersonas(usu.getnPersonas());
-        usuJPA.setTipoTrabajo(usu.getTipoTrabajo());
-        usuJPA.setIngresos(usu.getIngresos());
-        usuJPA.setContactoAdicional(usu.getContactoAdicional());
-        usuJPA.setNumTel(usu.getNumTel());
-        usuJPA.setNotificacion(usu.getNotificacion());
-        usuJPA.setEstado(usu.getEstado());
-
+        usuJPA.setGenero(usu.getGenero());
+        usuJPA.setNombreModelo(usu.getNombreModelo());
+        
+        FacadeStudio fs= new FacadeStudio();
+        Studio studio=fs.busacarObj(usu.getStudio().getId());
+        usuJPA.setStudio(studio);
+        
         facade.crearObj(usuJPA);
 
         return dto;
@@ -73,7 +64,7 @@ public class ServiceUsuario {
         
         for (Usuario usu : usuarios) {
             UsuarioDTO dto = new UsuarioDTO(usu);
-            dto.list_DatosCaso(usu.getDatoscasoList());
+            dto.list_Paginas(usu.getPaginaList());
             usuDTO.add(dto);
         }
 
@@ -82,7 +73,7 @@ public class ServiceUsuario {
 
     //Traer una persona especifica
     @GET
-    @Path("/{cc}")
+    @Path("/{id}")
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     public UsuarioDTO getEmployee(@PathParam("cc") String cc) throws ConexionException {
         FacadeUsuario facade = null;
@@ -91,7 +82,7 @@ public class ServiceUsuario {
         facade = new FacadeUsuario();
         Usuario usu = facade.busacarObj(Integer.parseInt(cc));
         dto = new UsuarioDTO(usu);
-        dto.list_DatosCaso(usu.getDatoscasoList());
+        dto.list_Paginas(usu.getPaginaList());
         return dto;
     }
 }

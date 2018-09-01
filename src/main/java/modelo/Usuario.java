@@ -4,98 +4,75 @@ package modelo;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
-public class Usuario implements Serializable {
 
+public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Size(max = 50)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "id")
+    private Integer id;
+    @Column(name = "cc")
+    private String cc;
     @Column(name = "nombre")
     private String nombre;
-    @Size(max = 50)
     @Column(name = "apellido")
     private String apellido;
-    @Size(max = 50)
-    @Column(name = "tipoDocumento")
-    private String tipoDocumento;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "cc")
-    private Integer cc;
+    @Column(name = "genero")
+    private String genero;
     @Column(name = "edad")
     private Integer edad;
-    @Size(max = 20)
     @Column(name = "celular")
     private String celular;
-    @Size(max = 10)
-    @Column(name = "telefono")
-    private String telefono;
-    @Size(max = 30)
     @Column(name = "correo")
     private String correo;
-    @Column(name = "estrato")
-    private Integer estrato;
-    @Size(max = 50)
-    @Column(name = "direccion")
-    private String direccion;
-    @Size(max = 25)
-    @Column(name = "barrio")
-    private String barrio;
-    @Size(max = 25)
-    @Column(name = "tipoCasa")
-    private String tipoCasa;
-    @Size(max = 25)
-    @Column(name = "localidad")
-    private String localidad;
-    @Size(max = 25)
-    @Column(name = "reciboPublico")
-    private String reciboPublico;
-    @Column(name = "nHijos")
-    private Integer nHijos;
-    @Size(max = 25)
-    @Column(name = "salud")
-    private String salud;
-    @Column(name = "trabajo")
-    private Boolean trabajo;
-    @Column(name = "nPersonas")
-    private Integer nPersonas;
-    @Size(max = 25)
-    @Column(name = "tipoTrabajo")
-    private String tipoTrabajo;
-    @Size(max = 25)
-    @Column(name = "ingresos")
-    private String ingresos;
-    @Size(max = 25)
-    @Column(name = "contactoAdicional")
-    private String contactoAdicional;
-    @Column(name = "numTel")
-    private Integer numTel;
-    @Column(name = "notificacion")
-    private Boolean notificacion;
-    @Column(name = "estado")
-    private Integer estado;
-    @OneToMany(mappedBy = "idUsuario", cascade = CascadeType.ALL)
-    private List<Datoscaso> datoscasoList;
+    @Column(name = "nombreModelo")
+    private String nombreModelo;
+    @OneToMany(mappedBy = "modelo")
+    private List<Pagina> paginaList;
+    @JoinColumn(name = "studio", referencedColumnName = "id")
+    @ManyToOne
+    private Studio studio;
 
     public Usuario() {
     }
 
-    public Usuario(Integer cc) {
+    
+    public Usuario(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getCc() {
+        return cc;
+    }
+
+    public void setCc(String cc) {
         this.cc = cc;
     }
 
@@ -115,20 +92,12 @@ public class Usuario implements Serializable {
         this.apellido = apellido;
     }
 
-    public String getTipoDocumento() {
-        return tipoDocumento;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setTipoDocumento(String tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public Integer getCc() {
-        return cc;
-    }
-
-    public void setCc(Integer cc) {
-        this.cc = cc;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
     public Integer getEdad() {
@@ -147,14 +116,6 @@ public class Usuario implements Serializable {
         this.celular = celular;
     }
 
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public String getCorreo() {
         return correo;
     }
@@ -163,186 +124,29 @@ public class Usuario implements Serializable {
         this.correo = correo;
     }
 
-    public Integer getEstrato() {
-        return estrato;
+    public String getNombreModelo() {
+        return nombreModelo;
     }
 
-    public void setEstrato(Integer estrato) {
-        this.estrato = estrato;
+    public void setNombreModelo(String nombreModelo) {
+        this.nombreModelo = nombreModelo;
     }
 
-    public String getDireccion() {
-        return direccion;
+    @XmlTransient
+    public List<Pagina> getPaginaList() {
+        return paginaList;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setPaginaList(List<Pagina> paginaList) {
+        this.paginaList = paginaList;
     }
 
-    public String getBarrio() {
-        return barrio;
+    public Studio getStudio() {
+        return studio;
     }
 
-    public void setBarrio(String barrio) {
-        this.barrio = barrio;
-    }
-
-    public String getTipoCasa() {
-        return tipoCasa;
-    }
-
-    public void setTipoCasa(String tipoCasa) {
-        this.tipoCasa = tipoCasa;
-    }
-
-    public String getLocalidad() {
-        return localidad;
-    }
-
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
-    }
-
-    public String getReciboPublico() {
-        return reciboPublico;
-    }
-
-    public void setReciboPublico(String reciboPublico) {
-        this.reciboPublico = reciboPublico;
-    }
-
-    public Integer getNHijos() {
-        return nHijos;
-    }
-
-    public void setNHijos(Integer nHijos) {
-        this.nHijos = nHijos;
-    }
-
-    public String getSalud() {
-        return salud;
-    }
-
-    public void setSalud(String salud) {
-        this.salud = salud;
-    }
-
-    public Boolean getTrabajo() {
-        return trabajo;
-    }
-
-    public void setTrabajo(Boolean trabajo) {
-        this.trabajo = trabajo;
-    }
-
-    public Integer getNPersonas() {
-        return nPersonas;
-    }
-
-    public void setNPersonas(Integer nPersonas) {
-        this.nPersonas = nPersonas;
-    }
-
-    public String getTipoTrabajo() {
-        return tipoTrabajo;
-    }
-
-    public void setTipoTrabajo(String tipoTrabajo) {
-        this.tipoTrabajo = tipoTrabajo;
-    }
-
-    public String getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(String ingresos) {
-        this.ingresos = ingresos;
-    }
-
-    public String getContactoAdicional() {
-        return contactoAdicional;
-    }
-
-    public void setContactoAdicional(String contactoAdicional) {
-        this.contactoAdicional = contactoAdicional;
-    }
-
-    public Integer getNumTel() {
-        return numTel;
-    }
-
-    public void setNumTel(Integer numTel) {
-        this.numTel = numTel;
-    }
-
-    public Boolean getNotificacion() {
-        return notificacion;
-    }
-
-    public void setNotificacion(Boolean notificacion) {
-        this.notificacion = notificacion;
-    }
-
-    public Integer getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Integer estado) {
-        this.estado = estado;
-    }
-
-    public Integer getnHijos() {
-        return nHijos;
-    }
-
-    public void setnHijos(Integer nHijos) {
-        this.nHijos = nHijos;
-    }
-
-    public Integer getnPersonas() {
-        return nPersonas;
-    }
-
-    public void setnPersonas(Integer nPersonas) {
-        this.nPersonas = nPersonas;
-    }
-
-    public List<Datoscaso> getDatoscasoList() {
-        return datoscasoList;
-    }
-
-    public void setDatoscasoList(List<Datoscaso> datoscasoList) {
-        this.datoscasoList = datoscasoList;
-    }
-    
-   public void addCaso(Datoscaso dato){
-        dato.setIdUsuario(this);
-        this.datoscasoList.add(dato);
-    }
-    
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (cc != null ? cc.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Usuario)) {
-            return false;
-        }
-        Usuario other = (Usuario) object;
-        if ((this.cc == null && other.cc != null) || (this.cc != null && !this.cc.equals(other.cc))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Usuario{" + "nombre=" + nombre + ", apellido=" + apellido + ", tipoDocumento=" + tipoDocumento + ", cc=" + cc + ", edad=" + edad + ", celular=" + celular + ", telefono=" + telefono + ", correo=" + correo + ", estrato=" + estrato + ", direccion=" + direccion + ", barrio=" + barrio + ", tipoCasa=" + tipoCasa + ", localidad=" + localidad + ", reciboPublico=" + reciboPublico + ", nHijos=" + nHijos + ", salud=" + salud + ", trabajo=" + trabajo + ", nPersonas=" + nPersonas + ", tipoTrabajo=" + tipoTrabajo + ", ingresos=" + ingresos + ", contactoAdicional=" + contactoAdicional + ", numTel=" + numTel + ", notificacion=" + notificacion + ", estado=" + estado + ", datoscasoList=" + datoscasoList + '}';
+    public void setStudio(Studio studio) {
+        this.studio = studio;
     }
     
 }
