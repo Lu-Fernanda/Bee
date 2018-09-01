@@ -21,24 +21,14 @@ public class PaginaDTO {
     
     private int id;
     private String nombrePagina;
-    private UsuarioDTO modelo;
    
     public PaginaDTO(Pagina pagina) {
         this.id = id;
         this.nombrePagina = nombrePagina;
-        this.modelo= new UsuarioDTO(pagina.getModelo()); 
     }
 
     public int getId() {
         return id;
-    }
-
-    public UsuarioDTO getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(UsuarioDTO modelo) {
-        this.modelo = modelo;
     }
 
     public void setId(int id) {

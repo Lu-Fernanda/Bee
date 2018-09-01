@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,32 +10,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-import org.codehaus.jackson.annotate.JsonIgnore;
 
-/**
- *
- * @author root
- */
+
 @Entity
 @Table(name = "usuario")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name = "Usuario.findById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
-    @NamedQuery(name = "Usuario.findByCc", query = "SELECT u FROM Usuario u WHERE u.cc = :cc"),
-    @NamedQuery(name = "Usuario.findByNombre", query = "SELECT u FROM Usuario u WHERE u.nombre = :nombre"),
-    @NamedQuery(name = "Usuario.findByApellido", query = "SELECT u FROM Usuario u WHERE u.apellido = :apellido"),
-    @NamedQuery(name = "Usuario.findByGenero", query = "SELECT u FROM Usuario u WHERE u.genero = :genero"),
-    @NamedQuery(name = "Usuario.findByEdad", query = "SELECT u FROM Usuario u WHERE u.edad = :edad"),
-    @NamedQuery(name = "Usuario.findByCelular", query = "SELECT u FROM Usuario u WHERE u.celular = :celular"),
-    @NamedQuery(name = "Usuario.findByCorreo", query = "SELECT u FROM Usuario u WHERE u.correo = :correo"),
-    @NamedQuery(name = "Usuario.findByNombreModelo", query = "SELECT u FROM Usuario u WHERE u.nombreModelo = :nombreModelo")})
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -71,11 +49,12 @@ public class Usuario implements Serializable {
     @Size(max = 30)
     @Column(name = "nombreModelo")
     private String nombreModelo;
-    @OneToMany(mappedBy = "modelo")
-    private List<Pagina> paginaList;
     @JoinColumn(name = "idStudio", referencedColumnName = "id")
     @ManyToOne
     private Studio idStudio;
+    @JoinColumn(name = "idPagina", referencedColumnName = "id")
+    @ManyToOne
+    private Pagina idPagina;
 
     public Usuario() {
     }
@@ -156,22 +135,20 @@ public class Usuario implements Serializable {
         this.nombreModelo = nombreModelo;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public List<Pagina> getPaginaList() {
-        return paginaList;
-    }
-
-    public void setPaginaList(List<Pagina> paginaList) {
-        this.paginaList = paginaList;
-    }
-
     public Studio getIdStudio() {
         return idStudio;
     }
 
     public void setIdStudio(Studio idStudio) {
         this.idStudio = idStudio;
+    }
+
+    public Pagina getIdPagina() {
+        return idPagina;
+    }
+
+    public void setIdPagina(Pagina idPagina) {
+        this.idPagina = idPagina;
     }
 
     @Override

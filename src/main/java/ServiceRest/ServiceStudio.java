@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ServiceRest;
 
 import DaoGenerico.ConexionException;
@@ -27,7 +23,7 @@ import modelo.Studio;
 @Path("/studio")
 public class ServiceStudio {
     
-     //Agregar usuario al sistema
+    //Agregar usuario al sistema
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -38,7 +34,7 @@ public class ServiceStudio {
 
         facade = new FacadeStudio();
         Studio stJPA = new Studio();
-        System.out.println("--------------------"+st.getCel()+"------");
+        System.out.println("--------------------"+"ESTUDIO"+"------");
         stJPA.setNombre(st.getNombre());
         stJPA.setPais(st.getPais());
         stJPA.setCiudad(st.getCiudad());
@@ -63,8 +59,8 @@ public class ServiceStudio {
         List<Studio> stu = facade.buscarTodoObj();
         
        for (Studio stt : stu) {
-            StudioDTO dto = new StudioDTO(stt.getId(),stt.getNombre(),stt.getPais(),stt.getCiudad(),stt.getCorreo(),stt.getCel(),stt.getCalificacion(),new ArrayList<UsuarioDTO>());
-            //dto.list_Paginas(usu.getPaginaList());
+            StudioDTO dto = new StudioDTO(stt);
+          
             stuDTO.add(dto);
         }
 

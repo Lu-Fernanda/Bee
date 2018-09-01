@@ -23,8 +23,8 @@ public class UsuarioDTO {
     private String celular;
     private String correo;
     private String nombreModelo;
-    private StudioDTO studio;
-    ArrayList<PaginaDTO> paginaList;
+    private StudioDTO idStudio;
+    private PaginaDTO idPagina;
     
 
     public UsuarioDTO(Usuario usu) {
@@ -37,26 +37,10 @@ public class UsuarioDTO {
         this.celular = usu.getCelular();
         this.correo = usu.getCorreo();
         this.nombreModelo = usu.getNombreModelo();
-       // this.paginaList=new ArrayList<PaginaDTO>();
+        this.idStudio = new StudioDTO(usu.getIdStudio());
+        this.idPagina= new PaginaDTO(usu.getIdPagina());
     }
 
-    public StudioDTO getStudio() {
-        return studio;
-    }
-
-    public void setStudio(StudioDTO studio) {
-        this.studio = studio;
-    }
-
-    public List<PaginaDTO> getPaginaList() {
-        return paginaList;
-    }
-
-    public void setPaginaList(ArrayList<PaginaDTO> paginaList) {
-        this.paginaList = paginaList;
-    }
-
-    
     public int getId() {
         return id;
     }
@@ -127,13 +111,23 @@ public class UsuarioDTO {
 
     public void setNombreModelo(String nombreModelo) {
         this.nombreModelo = nombreModelo;
-    }   
-     public List<PaginaDTO> list_Paginas(List<Pagina> list_pag) {
-        for (Pagina inf: list_pag) {
-            PaginaDTO dTO = new PaginaDTO(inf);
-            this.paginaList.add(dTO);
-        }
-        return this.paginaList;
     }
 
+    public StudioDTO getIdStudio() {
+        return idStudio;
+    }
+
+    public void setIdStudio(StudioDTO idStudio) {
+        this.idStudio = idStudio;
+    }
+
+    public PaginaDTO getIdPagina() {
+        return idPagina;
+    }
+
+    public void setIdPagina(PaginaDTO idPagina) {
+        this.idPagina = idPagina;
+    }
+
+    
 }

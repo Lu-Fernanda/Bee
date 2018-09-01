@@ -25,17 +25,15 @@ public class StudioDTO {
     private String correo;
     private String cel;
     private int calificacion;
-    List<UsuarioDTO> usuarioList;
 
-    public StudioDTO(int id, String nombre, String pais, String ciudad, String correo, String cel, int calificacion, List<UsuarioDTO> usuarioList) {
-        this.id = id;
-        this.nombre = nombre;
-        this.pais = pais;
-        this.ciudad = ciudad;
-        this.correo = correo;
-        this.cel = cel;
-        this.calificacion = calificacion;
-        this.usuarioList = usuarioList;
+    public StudioDTO(Studio stu) {
+        this.id = stu.getId();
+        this.nombre = stu.getNombre();
+        this.pais = stu.getPais();
+        this.ciudad = stu.getCiudad();
+        this.correo = stu.getCorreo();
+        this.cel = stu.getCel();
+        this.calificacion = stu.getCalificacion();
     }
     
     public int getId() {
@@ -92,13 +90,5 @@ public class StudioDTO {
 
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
-    }
- 
-       public List<UsuarioDTO> list_Paginas(List<Usuario> list_usu) {
-        for (Usuario inf: list_usu) {
-            UsuarioDTO dTO = new UsuarioDTO(inf);
-            this.usuarioList.add(dTO);
-        }
-        return this.usuarioList;
-    }    
+    } 
 }

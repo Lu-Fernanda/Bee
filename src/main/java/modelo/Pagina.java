@@ -1,23 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
@@ -26,10 +24,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "pagina")
 @XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Pagina.findAll", query = "SELECT p FROM Pagina p"),
-    @NamedQuery(name = "Pagina.findById", query = "SELECT p FROM Pagina p WHERE p.id = :id"),
-    @NamedQuery(name = "Pagina.findByNombrePagina", query = "SELECT p FROM Pagina p WHERE p.nombrePagina = :nombrePagina")})
 public class Pagina implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -40,9 +34,6 @@ public class Pagina implements Serializable {
     @Size(max = 50)
     @Column(name = "nombrePagina")
     private String nombrePagina;
-    @JoinColumn(name = "modelo", referencedColumnName = "id")
-    @ManyToOne
-    private Usuario modelo;
 
     public Pagina() {
     }
@@ -65,14 +56,6 @@ public class Pagina implements Serializable {
 
     public void setNombrePagina(String nombrePagina) {
         this.nombrePagina = nombrePagina;
-    }
-
-    public Usuario getModelo() {
-        return modelo;
-    }
-
-    public void setModelo(Usuario modelo) {
-        this.modelo = modelo;
     }
 
     @Override
