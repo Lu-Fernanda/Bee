@@ -90,6 +90,8 @@ public class ServiceImpl<T> implements Service<T> {
     public T busacarObj(Object id) {
         return (T) entityManager.find(type, id);
     }
+    
+   
 
     /// Crea una consulta especifica
     public List<T> findByProperty(String prop, Object val) {
