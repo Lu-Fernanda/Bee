@@ -113,21 +113,20 @@ public class UsuarioDTO {
         this.nombreModelo = nombreModelo;
     }
 
-//    public StudioDTO getIdStudio() {
-//        return idStudio;
-//    }
-//
-//    public void setIdStudio(StudioDTO idStudio) {
-//        this.idStudio = idStudio;
-//    }
-//
-//    public PaginaDTO getIdPagina() {
-//        return idPagina;
-//    }
-//
-//    public void setIdPagina(PaginaDTO idPagina) {
-//        this.idPagina = idPagina;
-//    }
+    public String getIdStudio() {
+        return idStudio;
+    }
 
+    public void setIdStudio(String idStudio) {
+        this.idStudio = idStudio;
+    }
+
+    public String getIdPagina() {
+        return idPagina;
+    }
+
+    public void setIdPagina(String idPagina) {
+        this.idPagina = idPagina;
+    }
     
 }
