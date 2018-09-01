@@ -40,8 +40,6 @@ public class Studio implements Serializable {
     private String cel;
     @Column(name = "calificacion")
     private Integer calificacion;
-    @OneToMany(mappedBy = "studio")
-    private List<Usuario> usuarioList;
 
     public Studio() {
     }

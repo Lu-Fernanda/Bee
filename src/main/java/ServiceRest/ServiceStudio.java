@@ -45,8 +45,7 @@ public class ServiceStudio {
         stJPA.setCorreo(st.getCorreo());
         stJPA.setCel(st.getCel());
         stJPA.setCalificacion(st.getCalificacion());
-       
-        
+
         facade.crearObj(stJPA);
 
         return dto;
