@@ -61,11 +61,11 @@ public class ServiceStudio {
         facade = new FacadeStudio();
         List<Studio> stu = facade.buscarTodoObj();
         
-        for (Studio stt : stu) {
-            StudioDTO dto = new StudioDTO(stt);
-            //dto.list_Paginas(usu.getPaginaList());
-            stuDTO.add(dto);
-        }
+//        for (Studio stt : stu) {
+//            StudioDTO dto = new StudioDTO(stt);
+//            //dto.list_Paginas(usu.getPaginaList());
+//            stuDTO.add(dto);
+//        }
 
         return stuDTO;
     }

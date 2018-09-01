@@ -40,6 +40,8 @@ public class Studio implements Serializable {
     private String cel;
     @Column(name = "calificacion")
     private Integer calificacion;
+    @OneToMany(mappedBy = "studio")
+    private List<Usuario> usuarioList;
 
     public Studio() {
     }
@@ -104,5 +106,38 @@ public class Studio implements Serializable {
         this.calificacion = calificacion;
     }
 
+    @XmlTransient
+    public List<Usuario> getUsuarioList() {
+        return usuarioList;
+    }
+
+    public void setUsuarioList(List<Usuario> usuarioList) {
+        this.usuarioList = usuarioList;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Studio)) {
+            return false;
+        }
+        Studio other = (Studio) object;
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "edu.sergioarboleda.mavenproject3.Studio[ id=" + id + " ]";
+    }
     
 }
